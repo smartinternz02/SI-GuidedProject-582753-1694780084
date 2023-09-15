@@ -4,7 +4,7 @@
 
 In this assignment, we will explore and demonstrate the use of various cybersecurity tools available in Kali Linux. Our goal is to gain practical knowledge and skills in each of the 10 primary categories within Kali Linux, ranging from Information Gathering to Social Engineering Tools. For each category, we will select one tool and delve into its description, use case, and provide step-by-step demonstrations to understand its functionality.
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled.png)
+![Untitled](Assets/Untitled.png)
 
 ## 📋 10 Categories Listed in Kali Linux
 
@@ -98,7 +98,7 @@ Recon-ng is particularly useful for the Information Gathering phase, where we ai
     - When you're done, exit Recon-ng using the `exit` command
     
 
-![Example run using hackertarget as the module](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%201.png)
+![Example run using hackertarget as the module](Assets/Untitled%201.png)
 
 Example run using hackertarget as the module
 
@@ -149,7 +149,7 @@ Nmap is essential for Vulnerability Analysis as it helps in identifying open por
 7. **Analyze Results:**
     - Examine the results of your Nmap scans to identify potential vulnerabilities and security issues. Pay attention to open ports, service versions, and any specific vulnerabilities reported.
 
-![Example Nmap Scan of My Website that reveals that port 80 TCP is open](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%202.png)
+![Example Nmap Scan of My Website that reveals that port 80 TCP is open](Assets/Untitled%202.png)
 
 Example Nmap Scan of My Website that reveals that port 80 TCP is open
 
@@ -188,13 +188,13 @@ WPScan is valuable in Web Application Analysis, particularly when dealing with W
 4. **Output Results:**
     - WPScan will display the scan results on the screen, including information about the WordPress version, installed themes, plugins, vulnerabilities, and more.
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%203.png)
+![Untitled](Assets/Untitled%203.png)
 
 `[elementor.com](http://elementor.com)` is an example of a site that uses wordpress, you can see the technologies that a website uses by utilizing tools like wappalyser. 
 
 A scan of this website would look as follows:
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%204.png)
+![Untitled](Assets/Untitled%204.png)
 
 Critical information like out of date version, plugins used etc has been revealed.
 
@@ -256,7 +256,7 @@ SQLMap is indispensable in Database Assessment to uncover SQL injection vulnerab
     ```
     
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%205.png)
+![Untitled](Assets/Untitled%205.png)
 
 Here is the query I used to get the results above, I added a few extra flags to get a dump of the names of artists on a pentesting site.
 
@@ -311,17 +311,17 @@ John the Ripper is employed for Password Attacks to test the strength of passwor
 
 Do demonstrate this I first encrypted a zip file like so:
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%206.png)
+![Untitled](Assets/Untitled%206.png)
 
 I then put john the ripper to the test by running this file thru it and adding an output operator pointing to a file named `hash.txt`
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%207.png)
+![Untitled](Assets/Untitled%207.png)
 
 On opening it with vim, `vim hash.txt`, I confirmed that john the ripper had cracked the successful value and put it in the hash.txt file in the form of a hash.
 
 This can then be converted to utf-8 using the following formatting.
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%208.png)
+![Untitled](Assets/Untitled%208.png)
 
 ### 6. Wireless Attacks (**aircrack-ng)**
 
@@ -363,11 +363,11 @@ Radare2 is valuable in Reverse Engineering for dissecting and understanding the 
 
 I created a binary called crackme by running a C language code using `gcc test.c -o crackme` then opened it in r2 to read binaries. 
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%209.png)
+![Untitled](Assets/Untitled%209.png)
 
 One can find the entry point of the binary using `ie` and main address using `iM` as below:
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%2010.png)
+![Untitled](Assets/Untitled%2010.png)
 
 Also, the binary is not stripped.
 
@@ -391,7 +391,7 @@ Metasploit Framework is crucial in Exploitation Tools to simulate real-world att
 4. Execute the exploit and gain access to the target system.
 5. Validate the vulnerability and assess the impact.
 
-![Example Usage: Gaining Root Access on a [Localhost](http://Localhost) with a payload listed](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%2011.png)
+![Example Usage: Gaining Root Access on a [Localhost](http://Localhost) with a payload listed](Assets/Untitled%2011.png)
 
 Example Usage: Gaining Root Access on a [Localhost](http://Localhost) with a payload listed
 
@@ -415,11 +415,11 @@ Wireshark is essential in Sniffing Spoofing to intercept and analyze network pac
 
 Here’s an example test I performed on a wireshark capture file that I found online. By following the TCP Trace, I was able to piece together the HTML rendering and see what exactly the user saw. This happened because the connection was over HTTP instead of the much more secure HTTPS.
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%2012.png)
+![Untitled](Assets/Untitled%2012.png)
 
 The capture file can be found here: 
 
-[http.cap](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/http.cap)
+[http.cap](Assets/http.cap)
 
 ### 10. Post Exploitation (**mimikatz)**
 
@@ -476,4 +476,4 @@ You can read more about this at:
 
 However here’s a screenshot I found online showing what theh end result of the credential dumping looks like:
 
-![Untitled](Week%202%20Assignment%20d183ff81ed674b8ca056620f1e1d561d/Untitled%2013.png)
+![Untitled](Assets/Untitled%2013.png)

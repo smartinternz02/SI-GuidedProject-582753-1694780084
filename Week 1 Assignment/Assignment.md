@@ -3,7 +3,7 @@
 > Link to the sample document:
 > 
 > 
-> [OWASP Top 10 Report.pdf](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/OWASP_Top_10_Report.pdf)
+> [OWASP Top 10 Report.pdf](Assets/OWASP_Top_10_Report.pdf)
 > 
 
 # 📝 Assignment Overview
@@ -100,39 +100,39 @@ I found the above bug while monitoring the data exchange happening while I book 
 
 The booking page normally works as follows:
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled.png)
+![Untitled](Assets/Untitled.png)
 
 The booking information is entered into the website
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%201.png)
+![Untitled](Assets/Untitled%201.png)
 
 The website returns an alert that its underprocess.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%202.png)
+![Untitled](Assets/Untitled%202.png)
 
 And you are then redirected to a site that says that your order is pending confirmation.
 
 So now I tried to intercept the traffic, This time I entered my own details and tried again (But not reccomended practice)
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%203.png)
+![Untitled](Assets/Untitled%203.png)
 
 And after the alert’s redirect, the packets intercepted were as follows: 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%204.png)
+![Untitled](Assets/Untitled%204.png)
 
 The `order_id` parameter seemed interesting, since it had a garbled value after it being sent thru a HTTP GET request. So I tested this in the repeater. Since the value ended in an equals sign, this hints that it may be a `base64` encoding. So I decoded it returned the order id of `#42069` which was the order I got before. 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%205.png)
+![Untitled](Assets/Untitled%205.png)
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%206.png)
+![Untitled](Assets/Untitled%206.png)
 
 So I tested this to see if we can send the order IDs of people before me to be able to trick the website to show me their confirmation page.  I entered `42068`
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%207.png)
+![Untitled](Assets/Untitled%207.png)
 
 On rendering the response I got from sending `42068` in the repeater, I got the following order page: 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%208.png)
+![Untitled](Assets/Untitled%208.png)
 
 Since we found access to another person’s order, it is considered to be broken access control and we have successfully exploited this website for the given CWE.
 
@@ -200,7 +200,7 @@ This was a relatively simpler vulnerability to exploit. I just had to intercept 
 
 And sure enough, once I used my name as username `owais` and the password as something like `mysecretpassword`, I was able to pick it up in the proxy in plain text.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%209.png)
+![Untitled](Assets/Untitled%209.png)
 
 You can even pick this packet up over something like wireshark which only picks up packets and has no encryption decryption features whatsoever.
 
@@ -274,13 +274,13 @@ This vulnerability was also found in the bookings page that we have explored bef
 
 What this means is, since you cannot manually enter charectors and the only way to enter information is thru the graphic interface of the date picker, the developer assumes that is enough data sanitization. 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2010.png)
+![Untitled](Assets/Untitled%2010.png)
 
 However we can intercept the request in between thru the proxy and then modify and sent this request to the server and play around with it. 
 
 On entering information normally, the rendered output looks like this in HTML:
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2011.png)
+![Untitled](Assets/Untitled%2011.png)
 
 Specifically, we notice that the date entered is being rendered in an HTML element like so:
 
@@ -304,11 +304,11 @@ So I will try to intercept the packet in between and try to send the terms `"><s
 
 To do this, I opened the same page again for another order booking, entered some random information and switched on the intercept.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2012.png)
+![Untitled](Assets/Untitled%2012.png)
 
 Then I tapped the `Reserve Booking` to catch the request in between. 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2013.png)
+![Untitled](Assets/Untitled%2013.png)
 
 Here the request being sent (line 21) is: 
 
@@ -324,13 +324,13 @@ email=test@test.com&date="><script>print()</script>&userFN=Owais
 
 And when I forwarded this packet, the print function triggered.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2014.png)
+![Untitled](Assets/Untitled%2014.png)
 
 This means we were able to execute a script and discover a reflected XSS since the information went to the server and came back thru the form. 
 
 On cancelling the print and checking by using inspect element, we see that the code has been injected in the page and the remaining part of the script from earlier is shown after the date picker as plain text.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2015.png)
+![Untitled](Assets/Untitled%2015.png)
 
 ---
 
@@ -405,33 +405,33 @@ For this example, I picked up a lab from [PortSwigger](https://portswigger.net/w
 
 The target site is an ecommerce application and on logging in, we have a store credit of `$100`. 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2016.png)
+![Untitled](Assets/Untitled%2016.png)
 
 Here there is a vulnerability in the add to cart feature that lets you buy items at a price you have set by yourself. 
 
 When you normally add an item to the cart:
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2017.png)
+![Untitled](Assets/Untitled%2017.png)
 
 And try to buy it, The transaction gets blocked and there’s not enough credit for the purchase.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2018.png)
+![Untitled](Assets/Untitled%2018.png)
 
 So we try adding it again but this time we intercept the data while sending it over. And we see that the price is being sent over as a parameter.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2019.png)
+![Untitled](Assets/Untitled%2019.png)
 
 So we modify it to an arbitrary integer just to see if it works and forward the request.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2020.png)
+![Untitled](Assets/Untitled%2020.png)
 
 And now when we access the cart, we see it being added for our price instead. ($10)
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2021.png)
+![Untitled](Assets/Untitled%2021.png)
 
 And when we place the order, it sends back a confirmation, indicating that we have successfully exploited this application for that vulnerability. 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2022.png)
+![Untitled](Assets/Untitled%2022.png)
 
 ---
 
@@ -500,13 +500,13 @@ https://0ad20027040dce5d86a427a90038001.web-security-academy.net/product?product
 
 So I tried putting it as an arbitrarily huge number like 9328357248 since the possiblity of those many entries existing on the database was slim. And instead of throwing a custom error message, I directly got an error response from the java runtime. 
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2023.png)
+![Untitled](Assets/Untitled%2023.png)
 
 While it did contain a lot of information about the errors encountered by the internal server, It also revealed what the server is running on in the bottom line… `Apache Struts 2 2.3.31` 
 
 A [simple google search of this server](https://www.google.com/search?q=apache+struts+2+2.3.31&oq=Apache+Struts+2+2.3.31&aqs=chrome.0.35i39i650j0i512j0i390i650.919j0j1&sourceid=chrome&ie=UTF-8) reveals that this is a very vulnerable server and has numerous vulnerabilities. Here are some CVEs with some pretty high base scores with known exploits existing.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2024.png)
+![Untitled](Assets/Untitled%2024.png)
 
 ### Note:
 
@@ -544,7 +544,7 @@ Using components with known vulnerabilities can significantly increase the risk 
 
 Refer previous demonstration as it fits either category. The website used an older version of Apache Struts which is highly vulnerable.
 
-![Untitled](Week%201%20Assignment%20fb7018cb51ce49d09909bc960a4b613f/Untitled%2024.png)
+![Untitled](Assets/Untitled%2024.png)
 
 ---
 
