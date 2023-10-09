@@ -1,5 +1,10 @@
 # 📑 Coursework Repository 📑
 
+> ⚠️ **Warning: Markdown Formatting**
+> Please note that all of the assignments provided in this repository are in Markdown formatting. Since I rely heavily on note-taking apps like [Notion](https://www.notion.so/) and [Obsidian](https://obsidian.md/), while it may seem perfectly normal in the github repo I uploaded it to, the rendering of Markdown content might not appear exactly the same when downloaded, as some Markdown syntax may not be fully supported.
+> If you encounter any issues or inconsistencies with the formatting, please keep this in mind and consider viewing the documents in a Markdown-friendly application or editor for the best experience.
+> Thank you for your understanding! 🙏
+
 ## Quick Links
 - [Course Overview](#course-overview)
 - [Weekly Assignments Overview](#weekly-assignments-overview)
